@@ -1,0 +1,48 @@
+[project]
+name = "firstline"
+version = "0.1.0"
+description = "An agent team that triages GitHub issues, with every decision logged, scored and checked against real outcomes"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Sai Vanamali Simhambhatla", email = "isvanamali@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.9",
+    "pydantic-settings>=2.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[project.scripts]
+firstline = "firstline.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/firstline"]
+strict = true
+plugins = ["pydantic.mypy"]
