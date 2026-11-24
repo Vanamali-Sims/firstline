@@ -1,0 +1,26 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Secrets: never commit
+.env
+*.key
+
+# Snapshot data is rebuilt with `firstline snapshot`; only the manifest is tracked
+data/snapshot/*
+!data/snapshot/MANIFEST.json
+
+# Eval runs: per-run output, results tables are generated from them
+eval/runs/*
+!eval/runs/.gitkeep
+
+# LLM response cache
+.cache/
